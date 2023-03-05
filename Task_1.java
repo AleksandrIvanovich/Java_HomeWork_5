@@ -11,10 +11,12 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Task_1 {
 
     public static void main(String[] args) {
+
         HashMap<String, Integer> openBracket = new HashMap<String, Integer>() {
             {
                 put("{", 0);
@@ -31,12 +33,16 @@ public class Task_1 {
                 put(">", 3);
             }
         };
+
+        Scanner userInput  = new Scanner(System.in); 
+        System.out.print("Введите следующие скобки - ()[]{}<> - в любом порядке: \n");
+        String text = userInput.nextLine();
         
-        // String text = "[,],{,},(,(,<,>,),)";
-        //  boolean validate = validate(openBracket, closeBracket, text);
-         
-        String text2 = "[,],{,},(,<,),>";
-        boolean validate = validate(openBracket, closeBracket, text2);
+        
+        // String text = "[]{}((<>))";
+        // String text = "[]{}(<)>";
+        
+        boolean validate = validate(openBracket, closeBracket, text);
 
         if (validate) {
             System.out.println("Скобки расставлены правильно.");
@@ -49,7 +55,8 @@ public class Task_1 {
                                     HashMap<String, Integer> closeBracket,
                                     String text) {
 
-        String[] strings = text.split(",");
+        String[] strings = text.split("");
+      
 
         Deque<String> stack = new ArrayDeque<>();
 
